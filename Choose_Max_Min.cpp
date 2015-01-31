@@ -30,7 +30,8 @@ void PercDown(int a[] , int i , int n) //最小的下滤，求最大的堆
         else
             break;
     }
-    a[i] = temp ;// 如果 存在孩子节点大于祖先节点  就把祖先节点赋值给孩子节点  因为i目前变成孩子节点的下标； 如果不存在  也就保持不变
+    a[i] = temp ;// 如果 存在孩子节点大于祖先节点  就把祖先节点赋值给孩子节点  因为i目前变成孩子节点的下标； 
+                 //如果不存在  也就保持不变
 }
 
 void PercUp(int a[] , int i , int n) //最小的上滤 ，选出最小的节点
@@ -39,7 +40,7 @@ void PercUp(int a[] , int i , int n) //最小的上滤 ，选出最小的节点
     for( temp = a[i] ; LeftChild(i) < n ; i = child )
     {
         child = LeftChild(i);
-        if ( (child != n -1) && (a[child+1] < a[child]) ) // 选择最小的节点 若右孩子小于左孩子，所以要用右孩子去和根节点比较
+        if ( (child != n -1) && (a[child+1] < a[child]) ) //选择最小的节点 若右孩子小于左孩子，所以要用右孩子去和根节点比较
                 child++;
         if( temp > a[child] ) //如果 孩纸节点  比父节点更小
             a[i] = a[child] ;//把最小的孩子  赋值给父节点
@@ -69,7 +70,6 @@ int HeapSort(int a[] ,int n )
     #endif
     Tmp_Larger = a[0];
     printf("larger : %d \n" ,a[0]);
-
     #if 0 //this code for heap sort
     for(i = n -1 ; i > 0 ; i-- )
     {
@@ -77,8 +77,6 @@ int HeapSort(int a[] ,int n )
         PercDown(a , 0 , i ) ;
     }
     #endif
-
-
      for(i = n/2 ; i >= 0 ; i-- ) // n/2 标号最大分支节点，即最大的非叶子节点标号 ；
         PercUp(  a , i , n ); //求最小堆，采用上滤，使最小的浮上来
     #if 0
@@ -89,7 +87,6 @@ int HeapSort(int a[] ,int n )
     #endif
     Tmp_Smaller = a[0];
     printf("smaller : %d \n" ,a[0]);
-
     return abs(Tmp_Larger - Tmp_Smaller);
 }
 
